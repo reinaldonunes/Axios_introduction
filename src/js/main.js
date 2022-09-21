@@ -4,7 +4,8 @@ const headersEl = document.getElementById('headers');
 const configEl = document.getElementById('config');
 
 
-const endpoint = 'https://jsonplaceholder.typicode.com/posts'
+const endpoint = 'https://jsonplaceholder.typicode.com/posts';
+const endpoint_multiply = 'https://jsonplaceholder.typicode.com';
 
 const get = () => {
   const config = {
@@ -53,7 +54,13 @@ const del = () => {
 }
 
 const multiple = () => {
-    console.log('multiple');
+  Promise.all([
+    axios.get(endpoint_multiply+"/posts?limit=2"),
+    axios.get(endpoint_multiply+"/users?limit=2")
+  ]).then((response) => {
+    console.table(response[0].data)
+    console.table(response[1].data)
+  })
 }
 
 const transform = () => {
