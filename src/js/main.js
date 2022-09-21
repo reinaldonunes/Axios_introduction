@@ -140,13 +140,13 @@ const renderOutput = (response) => {
     // Status
     const status = response.status;
     statusEl.removeAttribute('class');
-    let statusElClass = 'inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium';
+    let statusElClass = 'px-2 py-1 rounded ';
     if (status >= 500) {
-        statusElClass += ' bg-red-100 text-red-800';
+        statusElClass += 'bg-danger text-white';
     } else if (status >= 400) {
-        statusElClass += ' bg-yellow-100 text-yellow-800';
+        statusElClass += 'bg-danger text-white';
     } else if (status >= 200) {
-        statusElClass += ' bg-green-100 text-green-800';
+        statusElClass += 'bg-success text-white';
     }
 
     statusEl.innerHTML = status;
