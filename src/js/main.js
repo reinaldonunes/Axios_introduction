@@ -64,7 +64,23 @@ const multiple = () => {
 }
 
 const transform = () => {
-    console.log('transform');
+  const config = {
+    params: {
+      _limit: 2,
+    },
+    transformResponse: [function (data){
+      const payload = JSON.parse(data).map(p => {
+        return {
+          ...p,
+          is_selected: false
+        }
+      })
+
+      return payload;
+    }]
+  };
+  axios.get(endpoint, config)
+    .then((response) => renderOutput(response))
 }
 
 const errorHandling = () => {
