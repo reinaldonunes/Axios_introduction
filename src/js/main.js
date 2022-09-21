@@ -10,6 +10,17 @@ axios.interceptors.request.use(function(config){
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
+const newAxios = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com',
+  headers: {
+    common: {
+      Authorization: 'new axios'
+    }
+  }
+});
+newAxios.defaults.headers.common['Authorization'] = 'new axios';
+
+
 const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 const endpoint_multiply = 'https://jsonplaceholder.typicode.com';
 
@@ -19,7 +30,7 @@ const get = () => {
       _limit: 2,
     }
   };
-  axios.get("/posts", config)
+  newAxios.get("/posts", config)
     .then((response) => renderOutput(response))
 }
 
