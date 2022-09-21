@@ -92,7 +92,23 @@ const errorHandling = () => {
 }
 
 const cancel = () => {
-    console.log('cancel');
+  const controller = new AbortController();
+
+  const config = {
+    params: {
+      _limit: 2,
+    },
+    signal: controller.signal
+  };
+  axios.get(endpoint, config)
+    .then((response) => renderOutput(response))
+    .catch((error => {
+      console.log(error.message)
+    }))
+
+  
+  controller.abort();
+  
 }
 
 const clear = () => {
