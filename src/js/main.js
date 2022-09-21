@@ -8,6 +8,7 @@ axios.interceptors.request.use(function(config){
   return config;
 })
 
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 const endpoint_multiply = 'https://jsonplaceholder.typicode.com';
@@ -18,7 +19,7 @@ const get = () => {
       _limit: 2,
     }
   };
-  axios.get(endpoint, config)
+  axios.get("/posts", config)
     .then((response) => renderOutput(response))
 }
 
