@@ -3,6 +3,11 @@ const dataEl = document.getElementById('data');
 const headersEl = document.getElementById('headers');
 const configEl = document.getElementById('config');
 
+axios.interceptors.request.use(function(config){
+  console.log(config.headers)
+  return config;
+})
+
 
 const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 const endpoint_multiply = 'https://jsonplaceholder.typicode.com';
