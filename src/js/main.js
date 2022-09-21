@@ -84,7 +84,11 @@ const transform = () => {
 }
 
 const errorHandling = () => {
-    console.log('errorHandling');
+  axios.get(endpoint_multiply+"/postsz")
+  .then((response) => renderOutput(response))
+  .catch((error) => {
+    renderOutput(error.response)
+  })
 }
 
 const cancel = () => {
